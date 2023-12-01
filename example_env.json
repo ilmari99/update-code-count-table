@@ -1,0 +1,5 @@
+{
+    "token": "<github_token>",
+    "username": "<github_username>",
+    "exclude_from_table" : ["CSV", "Excel", "JSON", "XML", "CSS", "YAML", "pip requirements", "Ini", "Groovy", "Diff", "TSV", "Properties", "Markdown"]
+}
