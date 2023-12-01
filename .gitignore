@@ -3,6 +3,8 @@ __*__
 
 __private_env.json
 
+.VSCode*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
