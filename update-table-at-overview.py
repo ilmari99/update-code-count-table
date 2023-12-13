@@ -13,7 +13,7 @@ UNAME = env_file['username']
 TOKEN = env_file['token']
 EXCLUDE_FILES = env_file['exclude_from_table']
 
-DO_UPDATE = True
+DO_UPDATE = False
 
 
 gh = Github(TOKEN)
@@ -93,7 +93,9 @@ print(f"Updated code count table: {code_count_table}")
 # Finally, update the overview page by going to folder with your username, and updating its README.md file
 os.chdir("..")
 os.chdir("..")
+print(f"Changed directory to {os.getcwd()}")
 os.chdir(UNAME + "__")
+print(f"Changed directory to {os.getcwd()}")
 # Read the file
 with open("README.md", "r") as f:
     lines = f.readlines()
@@ -114,8 +116,15 @@ print(lines[start_idx:end_idx])
 with open("README.md", "w") as f:
     f.writelines(lines)
 
+print(f"Pushing changes to {UNAME}__")
+# Show repo upstream
+os.system("git remote -v")
+os.system("git remote update")
+os.system("git fetch")
+os.system("git status")
 # Finally, push the changes
 os.system("git add README.md")
-os.system("git commit -m 'Automatic update of code count table'")
+os.system("git commit -m \"Automatic update of code count table\"")
+os.system("git pull")
 os.system("git push")
 os.chdir("..")
