@@ -97,14 +97,15 @@ print(f"Changed directory to {os.getcwd()}")
 os.chdir(UNAME + "__")
 print(f"Changed directory to {os.getcwd()}")
 # Read the file
-with open("README.md", "r") as f:
+with open("README.md", "r", encoding="utf-8") as f:
     lines = f.readlines()
 # Find the line with the code count table
 start_idx = 0
 while not lines[start_idx].startswith("### Lines of code"):
     start_idx += 1
 end_idx = start_idx + 1
-while "##" not in lines[end_idx]:
+# While line is not empty, keep going
+while lines[end_idx] != "\n":
     end_idx += 1
 # Replace the code count table
 lines[start_idx + 1:end_idx] = code_count_table
@@ -113,8 +114,9 @@ lines[start_idx] = f"### Lines of code in my GitHub repositories (updated on {da
 print(lines[start_idx:end_idx])
 
 # Write the file
-with open("README.md", "w") as f:
+with open("README.md", "w",encoding="utf-8") as f:
     f.writelines(lines)
+
 
 print(f"Pushing changes to {UNAME}__")
 # Show repo upstream
