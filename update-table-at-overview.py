@@ -13,7 +13,7 @@ UNAME = env_file['username']
 TOKEN = env_file['token']
 EXCLUDE_FILES = env_file['exclude_from_table']
 
-DO_UPDATE = False
+DO_UPDATE = True
 
 
 gh = Github(TOKEN)
